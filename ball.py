@@ -6,7 +6,8 @@ class Ball():
         self.x = vindu_bredde / 2
         self.bottom = vindu_hoyde * 0.9
         self.farge = "white"
-        self.fart = 4
+        self.fart_y = 4
+        self.fart_x = 0
         self.ramme = pygame.Rect(0,0,self.radius, self.radius)
         
 
@@ -14,10 +15,11 @@ class Ball():
         pygame.draw.circle(vindu, self.farge, [self.x, self.bottom], self.radius)
 
     def flytt(self):
-        self.bottom += self.fart
+        self.bottom += self.fart_y
         if (self.bottom-20) <= 0:
-            self.fart = self.fart * -1
+            self.fart_y = self.fart_y * -1
 
     def kollisjon(self):
-        pass
+       pass
+    
         

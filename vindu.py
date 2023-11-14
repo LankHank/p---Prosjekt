@@ -36,6 +36,11 @@ class Vindu():
                 self.spiller.ramme.x += self.spiller.fart
             if self.spiller.ramme.right >= 600:
                 self.spiller.ramme.x -= self.spiller.fart
+            if self.ball.ramme.colliderect(self.spiller.ramme):
+                print(1)
+                self.ball.fart_y = self.ball.fart_y * -1
+                dx = self.ball.ramme.centerx - self.spiller.ramme.centerx
+                self.ball.fart_x = dx / 50
             
             taster = pygame.key.get_pressed()
             if taster[pygame.K_ESCAPE]:
