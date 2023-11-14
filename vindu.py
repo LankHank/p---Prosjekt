@@ -32,17 +32,16 @@ class Vindu():
                 if hendelse.type == pygame.QUIT:
                     self.avslutt()
 
-            if self.spiller.ramme.left <= 0:
-                self.spiller.ramme.x += self.spiller.fart
-            if self.spiller.ramme.right >= 600:
-                self.spiller.ramme.x -= self.spiller.fart
             if self.ball.ramme.colliderect(self.spiller.ramme):
-                print(1)
                 self.ball.fart_y = self.ball.fart_y * -1
                 dx = self.ball.ramme.centerx - self.spiller.ramme.centerx
-                self.ball.fart_x = dx / 50
+                self.ball.fart_x = dx / 10
+                print(self.ball.ramme.colliderect(self.spiller.ramme))
+
             
             taster = pygame.key.get_pressed()
+            if taster[pygame.K_r]:
+                self.reset_game()
             if taster[pygame.K_ESCAPE]:
                 self.avslutt()
             if taster[pygame.K_LEFT]:
@@ -58,6 +57,10 @@ class Vindu():
             
             pygame.display.flip()
             self.klokke.tick(self.fps)
+
+    def reset_game(self):
+        self.spiller = Spiller(self.bredde, self.hoyde)
+        self.ball = Ball(self.bredde, self.hoyde)
 
 spill_vindu = Vindu()
 spill_vindu.kjør()

@@ -11,9 +11,14 @@ class Spiller():
 
     def tegn(self, vindu: pygame.Surface):
         vindu.blit(self.bilde, self.ramme)
+        pygame.draw.circle(vindu, (0,255,0), self.ramme.center, 2)
 
     def flytt(self, dx: int):
         self.ramme.x += dx
+        if self.ramme.left <= 0:
+                self.ramme.x += self.fart
+        if self.ramme.right >= 600:
+                self.ramme.x -= self.fart
 
     
 
