@@ -23,6 +23,7 @@ class Vindu():
     def avslutt(self):
         pygame.quit()
         raise SystemExit
+
     
     def kjør(self):
         while True:
@@ -33,10 +34,11 @@ class Vindu():
                     self.avslutt()
 
             if self.ball.ramme.colliderect(self.spiller.ramme):
-                self.ball.fart_y = self.ball.fart_y * -1
-                dx = self.ball.ramme.centerx - self.spiller.ramme.centerx
-                self.ball.fart_x = dx / 10
-                print(self.ball.ramme.colliderect(self.spiller.ramme))
+                self.ball.fart_x, self.ball.fart_y = self.ball.fart(self.ball.ramme.centerx,self.ball.ramme.centery,self.spiller.ramme.centerx,self.spiller.ramme.centery)
+                self.spiller.poeng += 1
+
+            if self.ball.ramme.bottom >= self.hoyde:
+                self.reset_game()
 
             
             taster = pygame.key.get_pressed()
@@ -52,9 +54,9 @@ class Vindu():
             self.ball.flytt()
 
             self.vindu.fill("black")
-            self.spiller.tegn(self.vindu)
+            self.spiller.tegn_poeng(self.vindu)
+            self.spiller.tegn_spiller(self.vindu)
             self.ball.tegn(self.vindu)
-            
             pygame.display.flip()
             self.klokke.tick(self.fps)
 
