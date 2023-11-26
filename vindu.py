@@ -13,12 +13,6 @@ class Vindu():
 
         self.spiller = Spiller(self.bredde, self.hoyde)
         self.ball = Ball(self.bredde, self.hoyde)
-
-    def vis_spill(self):
-        self.tilstand = "spill"
-
-    def viss_meny(self):
-        self.tilstand = "meny"
     
     def avslutt(self):
         pygame.quit()

@@ -12,7 +12,6 @@ class Ball():
         self.fart_x = 0
         self.aks = 0.3
         self.ramme = pygame.Rect(self.x - self.radius,self.bottom - (2*self.radius),self.radius * 2, self.radius * 2)
-        self.turned = False
         
 
     def tegn(self, vindu: pygame.Surface):
